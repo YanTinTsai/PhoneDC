@@ -75,6 +75,17 @@
             flex: 1 0 30%; /* 調整為三列 */
             min-width: 100px; /* 最小寬度 */
         }
+            .checkbox-group-phone {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+            }
+            .checkbox-group-phone label {
+                margin-right: 15px;
+                flex: 1 0 30%; /* 調整為三列 */
+                min-width: 100px; /* 最小寬度 */
+            }
+    
         .signature {
             border: 1px solid #007bff; /* 藍色邊框 */
             width: 100%;
@@ -261,7 +272,7 @@
         <div class="section">
             <h2>第三部分：盒裝配件</h2>
             <div>
-                <div class="checkbox-group">
+                <div class="checkbox-group-phone">
                     <label><input type="checkbox">原廠盒裝</label>
                     <label><input type="checkbox">充電器</label>
                     <label><input type="checkbox">充電線</label>
@@ -477,7 +488,7 @@
 
             // 新增：收集盒裝配件的勾選項目
             const accessoryItems = [];
-            const accessoryCheckboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+            const accessoryCheckboxes = document.querySelectorAll('.checkbox-group-phone input[type="checkbox"]');
             accessoryCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     accessoryItems.push(checkbox.nextSibling.textContent.trim());
