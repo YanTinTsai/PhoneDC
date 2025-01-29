@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子合約書</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* 淡藍色背景 */
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #343a40; /* 深色標題 */
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff; /* 白色背景 */
+            padding: 20px;
+            border-radius: 15px; /* 圓角設計 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0; /* 淡灰色外框 */
+            border-radius: 15px; /* 圓角設計 */
+            padding: 20px; /* 內部間距 */
+            background-color: #f9f9f9; /* 淡灰色背景 */
+        }
+        .feature-item {
+            background-color: #e9ecef; /* 淡灰色背景 */
+            border-radius: 10px; /* 圓角設計 */
+            padding: 15px; /* 內部間距 */
+            margin-bottom: 15px; /* 每個項目之間的間距 */
+            border: 1px solid #ced4da; /* 淡灰色邊框 */
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* 允許換行 */
+            margin-bottom: 15px;
+        }
+        .row > div {
+            flex: 1 1 calc(25% - 10px); /* 四等分，並減去間距 */
+            margin-right: 10px;
+            min-width: 200px; /* 最小寬度 */
+        }
+        .row > div:last-child {
+            margin-right: 0; /* 最後一個不需要右邊距 */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #495057; /* 深色標籤 */
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 10px; /* 圓角設計 */
+            box-sizing: border-box;
+            background-color: #ffffff; /* 白色背景 */
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .checkbox-group label {
+            margin-right: 15px;
+            flex: 1 0 30%; /* 調整為三列 */
+            min-width: 100px; /* 最小寬度 */
+        }
+        .checkbox-group-phone label {
+                    margin-right: 15px;
+                    flex: 1 0 30%; /* 調整為三列 */
+                    min-width: 100px; /* 最小寬度 */
+                }
+        .checkbox-group-phone {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-bottom: 15px;
+                }
+        .signature {
+            border: 1px solid #007bff; /* 藍色邊框 */
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            border-radius: 10px; /* 圓角設計 */
+            background: #e9ecef;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px; /* 圓角設計 */
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .photo-preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* 置中顯示照片預覽 */
+            margin-top: 10px;
+        }
+        .photo-preview img {
+            width: 50%; /* 設定寬度為50% */
+            height: auto; /* 高度自動 */
+            margin: 5px; /* 圖片間距 */
+            border-radius: 10px; /* 圓角設計 */
+            max-height: 100px; /* 最大高度 */
+            object-fit: cover; /* 確保圖片不變形 */
+        }
+        .upload-section {
+            margin-bottom: 20px;
+        }
+        .terms {
+            margin: 15px 0;
+            font-size: 14px; /* 調整字體大小 */
+            line-height: 1.5; /* 調整行高 */
+        }
+        .device-info {
+            display: none; /* 初始隱藏 */
+            background-color: #e0e0e0; /* 背景顏色 */
+            padding: 10px; /* 增加內部間距 */
+            border-radius: 20px; /* 圓角設計 */
+            color: #343a40; /* 字體顏色 */
+            display: flex;
+            flex-wrap: wrap; /* 允許換行 */
+            justify-content: space-between; /* 兩側對齊 */
+        }
+        .device-info p {
+            flex: 1 0 45%; /* 每行顯示兩個項目 */
+            margin: 5px 0; /* 上下間距 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="contentToSave">
+        <h1>電子合約書</h1>
+
+        <div class="section">
+            <h2>第一部分：基本資訊</h2>
+            <div class="row">
+                <div>
+                    <label for="buyer">購買人:</label>
+                    <input type="text" id="buyer" />
+                </div>
+                <div>
+                    <label for="contact">聯絡電話:</label>
+                    <input type="text" id="contact" />
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="price">價格：</label>
+                    <input type="text" id="price" />
+                </div>
+                <div>
+                    <label for="brand">廠牌:</label>
+                    <input type="text" id="brand" />
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="model">型號:</label>
+                    <input type="text" id="model" />
+                </div>
+                <div>
+                    <label for="serial">序號:</label>
+                    <input type="text" id="serial" />
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="warranty">保固:</label>
+                    <input type="text" id="warranty" />
+                </div>
+                <div>
+                    <label for="color">規格顏色:</label>
+                    <input type="text" id="color" />
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>第二部分：裝置功能檢測</h2>
+            <div class="feature-item">
+                <h3>1. 感測器</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">多點觸控</label>
+                    <label><input type="checkbox">方向感測器</label>
+                    <label><input type="checkbox">接近感測器</label>
+                    <label><input type="checkbox">氣壓計</label>
+                    <label><input type="checkbox">光學雷達掃描儀</label>
+                    <label><input type="checkbox">陀螺儀</label>
+                    <label><input type="checkbox">電子羅盤</label>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>2. 音訊功能</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">喇叭</label>
+                    <label><input type="checkbox">前麥克風</label>
+                    <label><input type="checkbox">後麥克風</label>
+                    <label><input type="checkbox">頂部麥克風</label>
+                    <label><input type="checkbox">底部麥克風</label>
+                    <label><input type="checkbox">耳機與麥克風</label>
+                    <label><input type="checkbox">聽筒</label>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>3. 相機功能</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">後相機</label>
+                    <label><input type="checkbox">後長焦相機</label>
+                    <label><input type="checkbox">後超廣角相機</label>
+                    <label><input type="checkbox">前相機</label>
+                    <label><input type="checkbox">後臉部辨識</label>
+                    <label><input type="checkbox">前臉部辨識</label>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>4. 操作介面</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">Home鍵</label>
+                    <label><input type="checkbox">靜音鈕</label>
+                    <label><input type="checkbox">音量鍵</label>
+                    <label><input type="checkbox">休眠鍵</label>
+                    <label><input type="checkbox">螢幕觸碰</label>
+                    <label><input type="checkbox">螢幕顯示</label>
+                    <label><input type="checkbox">3D Touch</label>
+                    <label><input type="checkbox">Touch ID</label>
+                    <label><input type="checkbox">Face ID</label>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>5. 連接功能</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">無線充電</label>
+                    <label><input type="checkbox">充電孔</label>
+                    <label><input type="checkbox">Wi-Fi</label>
+                    <label><input type="checkbox">NFC</label>
+                    <label><input type="checkbox">藍牙</label>
+                    <label><input type="checkbox">行動網路功能</label>
+                </div>
+            </div>
+            <div class="feature-item">
+                <h3>6. 其他功能</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox">震動功能</label>
+                    <label><input type="checkbox">通話功能</label>
+                    <label><input type="checkbox">手電筒</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>第三部分：盒裝配件</h2>
+            <div>
+                <div class="checkbox-group-phone">
+                    <label><input type="checkbox">原廠盒裝</label>
+                    <label><input type="checkbox">充電器</label>
+                    <label><input type="checkbox">充電線</label>
+                    <label><input type="checkbox">耳機</label>
+                    <label><input type="checkbox">其他：</label>
+                    <input type="text" id="other" />
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>第四部分：裝置機況</h2>
+            <div class="row">
+                <div>
+                    <label for="appearance">外觀:</label>
+                    <input type="text" id="appearance" />
+                </div>
+                <div>
+                    <label for="battery">電池:</label>
+                    <input type="text" id="battery" />
+                </div>
+                <div>
+                    <label for="cycleCount">循環次數:</label>
+                    <input type="text" id="cycleCount" />
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>第五部分：確認簽名</h2>
+            <div class="device-info">
+                <h2>【購買資訊】</h2>
+                <div class="row"> 
+                    <p>購買人: <span id="displayBuyer"></span></p>
+                    <p>聯絡電話: <span id="displayContact"></span></p> <!-- 新增聯絡電話 -->
+                </div>
+                <div class="row"> 
+                    <p>價格: <span id="displayPrice"></span></p>
+                    <p>廠牌: <span id="displayBrand"></span></p>
+                </div>
+                <div class="row"> 
+                    <p>型號: <span id="displayModel"></span></p>
+                    <p>序號: <span id="displaySerial"></span></p>
+                </div>
+                <div class="row"> 
+                    <p>電池: <span id="displayBattery"></span></p> <!-- 新增電池 -->
+                    <p>循環次數: <span id="displayCycleCount"></span></p> <!-- 新增循環次數 -->
+                </div>
+                <div class="row"> 
+                <p>外觀: <span id="displayAppearance"></span></p> <!-- 新增外觀 -->
+                <p>盒裝配件: <span id="displayAccessories"></span></p> <!-- 新增盒裝配件 -->
+            <button class="btn" id="confirmButton">確認資料</button> <!-- 確認資料按鈕 -->
+                </div>
+                </div>
+            </div>
+            <div class="terms">
+                <h2>【合約內容】</h2>
+                <p>1. 當面交易，現金支付或其他雙方同意的支付方式。</p>
+                <p>2. 乙方應當面清點物品，確認無誤後再付款。</p>
+                <p>3. 若有任何瑕疵或損壞，乙方應當即時提出。</p>
+                <p>4. 甲方確保交易物品在交易時為良好狀態。</p>
+                <p>5. 交易完成後，如有任何問題或損壞，甲方不承擔任何責任。</p>
+                <p>6. 乙方應自行承擔交易後的所有責任。</p>
+            </div>
+            <div class="checkbox-group">
+                <label><input type="checkbox">我同意上述條款</label>
+            </div>
+            <canvas id="signature" class="signature"></canvas>
+            <button class="btn" id="clear">清除簽名</button>
+        </div>
+
+        <button class="btn" id="screenshotButton">截圖並儲存為 PDF</button> <!-- 新增截圖按鈕 -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script>
+        const canvas = document.getElementById('signature');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        function resizeCanvas() {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+            drawWatermark(); // 當畫布大小改變時重新繪製浮水印
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function drawWatermark() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除畫布
+            ctx.font = '50px Arial'; // 設定字體
+            ctx.fillStyle = 'rgba(200, 200, 200, 0.5)'; // 設定浮水印顏色和透明度
+            ctx.textAlign = 'center'; // 文字置中
+            ctx.textBaseline = 'middle'; // 文字基線置中
+            ctx.fillText('請在此處簽名', canvas.width / 2, canvas.height / 2); // 繪製浮水印
+        }
+
+        function startDrawing(x, y) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        function draw(x, y) {
+            if (drawing) {
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+        }
+
+        function stopDrawing() {
+            drawing = false;
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            startDrawing(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            draw(e.offsetX, e.offsetY);
+        });
+
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            startDrawing(touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top);
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            draw(touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top);
+        });
+
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchcancel', stopDrawing);
+
+        // 清除簽名的功能
+        document.getElementById('clear').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawWatermark(); // 清除後重新繪製浮水印
+        });
+
+        // 照片上傳預覽
+        function previewImage(event, previewId) {
+            const photoPreview = document.getElementById(previewId);
+            photoPreview.innerHTML = '';
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = '50%'; // 設定寬度為50%
+                img.style.height = 'auto'; // 高度自動
+                img.style.margin = '5px'; // 圖片間距
+                img.style.borderRadius = '10px'; // 圓角設計
+                img.style.maxHeight = '100px'; // 最大高度
+                img.style.objectFit = 'cover'; // 確保圖片不變形
+                photoPreview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+
+        // 畫布初始化時繪製浮水印
+        drawWatermark();
+
+        // 顯示設備資訊
+        function displayDeviceInfo() {
+            document.getElementById('displayBuyer').innerText = document.getElementById('buyer').value;
+            document.getElementById('displayContact').innerText = document.getElementById('contact').value; // 顯示聯絡電話
+            document.getElementById('displayPrice').innerText = document.getElementById('price').value;
+            document.getElementById('displayBrand').innerText = document.getElementById('brand').value;
+            document.getElementById('displayModel').innerText = document.getElementById('model').value;
+            document.getElementById('displaySerial').innerText = document.getElementById('serial').value;
+            document.getElementById('displayAppearance').innerText = document.getElementById('appearance').value; // 顯示外觀
+            document.getElementById('displayBattery').innerText = document.getElementById('battery').value; // 顯示電池
+            document.getElementById('displayCycleCount').innerText = document.getElementById('cycleCount').value; // 顯示循環次數
+
+            // 新增：收集盒裝配件的勾選項目
+            const accessoryItems = [];
+            const accessoryCheckboxes = document.querySelectorAll('.checkbox-group-phone input[type="checkbox"]');
+            accessoryCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    accessoryItems.push(checkbox.nextSibling.textContent.trim());
+                }
+            });
+
+            // 顯示勾選的盒裝配件
+            document.getElementById('displayAccessories').innerText = accessoryItems.join('、');
+        }
+
+        // 在按下確認資料按鈕時更新設備資訊並顯示
+        document.getElementById('confirmButton').addEventListener('click', () => {
+            displayDeviceInfo();
+            document.querySelector('.device-info').style.display = 'block'; // 顯示設備資訊
+        });
+
+        // 截圖並儲存為 PDF
+        document.getElementById('screenshotButton').addEventListener('click', () => {
+            html2canvas(document.getElementById('contentToSave')).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                pdf.addImage(imgData, 'PNG', 0, 0);
+                pdf.save('電子合約書.pdf');
+            });
+        });
+    </script>
+
+</body>
+</html>
