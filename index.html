@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>估價設備網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            color: #333;
+            font-size:45px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* 允許換行 */
+            margin-top: 40px;
+        }
+        .button {
+            background-color: #fff;
+            border: 0.5px solid #ddd;
+            border-radius: 35px;
+            padding: 20px;
+            text-align: center;
+            width: 180px;
+            margin: 10px; /* 增加間距 */
+            transition: box-shadow 0.3s;
+            text-decoration: none;
+            font-size:20px;
+        }
+        .button:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .button img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .button div {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* 媒體查詢：小於768px時改變排列方式 */
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column; /* 縱向排列 */
+                align-items: center; /* 中央對齊 */
+            }
+        }
+
+        /* 夜間模式樣式 */
+        .dark-mode {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        .dark-mode .button {
+            background-color: #444;
+            border: 1px solid #555;
+        }
+        .dark-mode .button div {
+            color: #fff;
+        }
+        .dark-mode h1{
+                    color: #fff;
+                }
+
+        /* Logo按鈕樣式 */
+        #logoButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        #logoButton img {
+            width: 30px; /* 設定Logo的大小 */
+            height: 30px;
+            transition: transform 0.3s;
+        }
+        #logoButton:hover img {
+            transform: scale(1.1); /* 懸停時稍微放大 */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>估價設備</h1>
+    <p>選擇一個設備以獲得更多資訊：</p>
+
+    <div class="button-container">
+        <a href="手機連結" class="button">
+            <img src="https://cdn.store-assets.com/s/962118/i/77458024.png" alt="手機">
+            <div>手機</div>
+        </a>
+        <a href="平板連結" class="button">
+            <img src="https://www.edustore.de/wp-content/uploads/iPad-10-silber-TeacherStore.png" alt="平板">
+            <div>平板</div>
+        </a>
+        <a href="電腦連結" class="button">
+            <img src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/mba_15_m3_2024_hero.png" alt="電腦">
+            <div>電腦</div>
+        </a>
+        <a href="其他連結" class="button">
+            <img src="https://gw.alicdn.com/imgextra/O1CN01M9LJ3J1Z02q749OpG_!!6000000003131-2-yinhe.png_.webp" alt="其他">
+            <div>其他</div>
+        </a>
+    </div>
+
+    <button id="logoButton">
+        <img src="https://cdn-icons-png.flaticon.com/512/5262/5262027.png" alt="切換模式">
+    </button>
+
+    <script>
+        const toggleButton = document.getElementById('logoButton');
+        let isDarkMode = false;
+
+        toggleButton.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+        });
+    </script>
+
+</body>
+</html>
